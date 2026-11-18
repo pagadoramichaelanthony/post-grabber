@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Post Grabber</title>
+  <link rel="stylesheet" href="../core/base.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Post Grabber</h1>
+    <button id="open-settings" class="link">Settings</button>
+  </header>
+
+  <div id="status" class="status" hidden></div>
+
+  <section id="view-empty" hidden>
+    <p id="empty-message" class="muted"></p>
+  </section>
+
+  <section id="view-profile" hidden>
+    <p>Profile: <strong id="profile-name"></strong></p>
+    <button id="open-panel" class="primary wide">Open side panel to rank posts</button>
+  </section>
+
+  <section id="view-post" hidden>
+    <div class="summary">
+      <div class="summary-top">
+        <strong id="post-account"></strong>
+        <span id="post-type" class="badge"></span>
+      </div>
+      <p id="post-caption" class="caption"></p>
+      <dl class="stats">
+        <div><dt>Views</dt><dd id="stat-views"></dd></div>
+        <div><dt>Likes</dt><dd id="stat-likes"></dd></div>
+        <div><dt>Comments</dt><dd id="stat-comments"></dd></div>
+        <div><dt>Shares</dt><dd id="stat-shares"></dd></div>
+      </dl>
+    </div>
+
+    <div class="actions">
+      <button id="copy-caption">Copy caption</button>
+      <button id="save-images">Save images</button>
+      <button id="save-video">Save video</button>
+      <button id="export-all" class="primary">Export all</button>
+    </div>
+
+    <button id="get-transcript" class="wide">Get transcript</button>
+    <div id="transcript-box" hidden>
+      <textarea id="transcript-text" rows="5" readonly aria-label="Transcript"></textarea>
+      <button id="copy-transcript" class="link">Copy transcript</button>
+    </div>
+
+    <details id="swipe">
+      <summary>Save to swipe file</summary>
+      <label class="field"><span>Hook type</span><input id="swipe-hook" type="text" list="hook-options"></label>
+      <datalist id="hook-options">
+        <option value="Question"><option value="Bold claim"><option value="Story"><option value="List"><option value="Before/after"><option value="Pattern interrupt">
+      </datalist>
+      <label class="field"><span>Format</span><input id="swipe-format" type="text" list="format-options"></label>
+      <datalist id="format-options">
+        <option value="Talking head"><option value="Voiceover"><option value="Carousel"><option value="Tutorial"><option value="Skit"><option value="Slideshow">
+      </datalist>
+      <label class="field"><span>Tags (comma separated)</span><input id="swipe-tags" type="text"></label>
+      <label class="field"><span>Notes</span><textarea id="swipe-notes" rows="2"></textarea></label>
+      <button id="swipe-save" class="primary wide">Save to swipe file</button>
+    </details>
+  </section>
+
+  <script src="../selectors.js"></script>
+  <script src="../core/utils.js"></script>
+  <script src="../core/settings.js"></script>
+  <script src="../core/csv.js"></script>
+  <script src="../core/swipe.js"></script>
+  <script src="../core/ui.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

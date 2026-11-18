@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Post Grabber",
+  "version": "1.0.0",
+  "description": "Social media research helper for Instagram and TikTok. Acts only on the page you are viewing, when you click.",
+  "minimum_chrome_version": "116",
+  "permissions": ["downloads", "storage", "sidePanel", "clipboardWrite"],
+  "host_permissions": [
+    "https://www.instagram.com/*",
+    "https://www.tiktok.com/*",
+    "https://*.cdninstagram.com/*",
+    "https://*.fbcdn.net/*",
+    "https://*.tiktokcdn.com/*",
+    "https://*.tiktokcdn-us.com/*",
+    "https://*.tiktokcdn-eu.com/*",
+    "https://*.tiktokv.com/*",
+    "https://api.openai.com/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Post Grabber",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png" }
+  },
+  "side_panel": { "default_path": "sidepanel/sidepanel.html" },
+  "options_page": "options/options.html",
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["selectors.js", "core/utils.js", "adapters/instagram.js", "content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.tiktok.com/*"],
+      "js": ["selectors.js", "core/utils.js", "adapters/tiktok.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

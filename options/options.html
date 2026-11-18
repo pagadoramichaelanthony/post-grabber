@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Post Grabber settings</title>
+  <link rel="stylesheet" href="../core/base.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <h1>Post Grabber settings</h1>
+
+    <section>
+      <h2>Pacing for multi-post actions</h2>
+      <div class="row">
+        <label class="field"><span>Max posts per run</span><input id="max-posts" type="number" min="1" max="200"></label>
+        <label class="field"><span>Min delay between posts (s)</span><input id="delay-min" type="number" min="2" max="120"></label>
+        <label class="field"><span>Max delay between posts (s)</span><input id="delay-max" type="number" min="2" max="300"></label>
+      </div>
+      <button id="save-limits" class="primary">Save pacing</button>
+      <div id="limits-status" class="status" hidden></div>
+    </section>
+
+    <section>
+      <h2>Transcripts (optional)</h2>
+      <p class="muted">When you click Get transcript, the video file is sent to OpenAI Whisper using your own key. OpenAI bills that usage to your account. Your key stays in this browser's local extension storage and is sent only to api.openai.com.</p>
+      <label class="check"><input id="transcript-enabled" type="checkbox"> Enable Get transcript</label>
+      <label class="field"><span>OpenAI API key</span><input id="api-key" type="password" autocomplete="off" spellcheck="false"></label>
+      <div class="row-buttons">
+        <button id="save-transcript" class="primary">Save transcript settings</button>
+        <button id="remove-key">Remove key</button>
+      </div>
+      <div id="transcript-status" class="status" hidden></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Swipe file <span id="swipe-count" class="muted"></span></h2>
+        <button id="swipe-export">Export CSV</button>
+      </div>
+      <div id="swipe-status" class="status" hidden></div>
+      <p id="swipe-empty" class="muted" hidden>Nothing saved yet. Use "Save to swipe file" in the popup on any post.</p>
+      <div class="table-wrap">
+        <table id="swipe-table" hidden>
+          <thead><tr><th>Post</th><th>Hook</th><th>Format</th><th>Tags</th><th>Notes</th><th></th></tr></thead>
+          <tbody id="swipe-rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="../selectors.js"></script>
+  <script src="../core/utils.js"></script>
+  <script src="../core/settings.js"></script>
+  <script src="../core/csv.js"></script>
+  <script src="../core/swipe.js"></script>
+  <script src="../core/ui.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

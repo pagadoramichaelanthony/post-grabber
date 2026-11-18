@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Post Grabber</title>
+  <link rel="stylesheet" href="../core/base.css">
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <header>
+    <h1>Rank posts</h1>
+    <span id="target" class="muted"></span>
+  </header>
+
+  <div class="toolbar">
+    <button id="rank" class="primary">Rank posts</button>
+    <button id="load-more" disabled>Load more</button>
+    <button id="top-10" disabled>Top 10</button>
+  </div>
+
+  <div id="status" class="status" hidden></div>
+  <p id="sort-note" class="muted note" hidden></p>
+
+  <div class="table-wrap">
+    <table id="table" hidden>
+      <thead>
+        <tr>
+          <th><input id="select-all" type="checkbox" aria-label="Select all posts"></th>
+          <th>Post</th>
+          <th class="num">Views</th>
+          <th class="num">Likes</th>
+          <th class="num" title="(likes + comments) / views">Eng.</th>
+          <th aria-label="Grab result"></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <footer>
+    <span id="selection" class="muted">0 selected</span>
+    <div class="toolbar">
+      <button id="export" disabled>Export selected</button>
+      <button id="grab" disabled>Grab selected</button>
+      <button id="stop" hidden>Stop</button>
+    </div>
+  </footer>
+
+  <script src="../selectors.js"></script>
+  <script src="../core/utils.js"></script>
+  <script src="../core/settings.js"></script>
+  <script src="../core/csv.js"></script>
+  <script src="../core/ui.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
